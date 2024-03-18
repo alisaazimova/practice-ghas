@@ -49,7 +49,9 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    - run: |
+    
+    - name: Java version
+      run: |
         echo "java version"
         java -version
 
