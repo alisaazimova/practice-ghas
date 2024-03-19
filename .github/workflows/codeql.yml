@@ -68,7 +68,23 @@ jobs:
 
         # For more details on CodeQL's query packs, refer to: https://docs.github.com/en/code-security/code-scanning/automatically-scanning-your-code-for-vulnerabilities-and-errors/configuring-code-scanning#using-queries-in-ql-packs
         # queries: security-extended,security-and-quality
+    - name: Upload CodeQL database
+      id: codeql-database-bundle
+      env:
+        LANGUAGE: ${{ matrix.language }}
+        CODEQL_PATH: /opt/hostedtoolcache/CodeQL/2.16.4/x64/codeql/codeql
+      run: |
+        CODEQL_DATABASE="/home/runner/work/_temp/codeql_databases/$LANGUAGE"
+        CODEQL_ZIP_OUTPUT="codeql-database-$LANGUAGE.zip"
 
+        $CODEQL_PATH database bundle $CODEQL_DATABASE --output=$CODEQL_ZIP_OUTPUT
+        echo "::set-output name=zip::$CODEQL_ZIP_OUTPUT"
+
+    - name: Upload CodeQL database
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ matrix.language }}-db
+        path: ${{ steps.codeql-database-bundle.outputs.zip }}
 
     # Autobuild attempts to build any compiled languages (C/C++, C#, Go, Java, or Swift).
     # If this step fails, then you should remove it and run the build manually (see below)
