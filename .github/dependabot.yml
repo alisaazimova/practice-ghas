@@ -6,8 +6,6 @@ updates:
       interval: "daily" 
     commit-message:
       prefix: "pip"
-    assignees:
-      - "alisaazimova" 
     labels:
-      - "triage-required"
+      - "triage-need"
       
