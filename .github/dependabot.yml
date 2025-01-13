@@ -4,10 +4,9 @@ updates:
     directory: "/authn-service"
     schedule:
       interval: "daily" 
+    labels: 
+    - "triage-need"
     commit-message:
       prefix: "pip"
-    assignees:
-      - "alisaazimova" 
-    labels:
-      - "triage-required"
+    
       
