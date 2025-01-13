@@ -4,7 +4,8 @@ updates:
     directory: "/authn-service"
     schedule:
       interval: "daily" 
-    labels: "triage-need"
+    labels: 
+    - "triage-need"
     commit-message:
       prefix: "pip"
     
