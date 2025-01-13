@@ -2,9 +2,9 @@ version: 2
 updates:
   - package-ecosystem: "pip"
     directory: "/authn-service"
-    labels: "triage-need"
     schedule:
       interval: "daily" 
+    labels: "triage-need"
     commit-message:
       prefix: "pip"
     
